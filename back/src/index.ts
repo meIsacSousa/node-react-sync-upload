@@ -1,7 +1,7 @@
-import express, { NextFunction, Request, Response } from 'express';
+import express from 'express';
 import cors from 'cors';
 import { uploadRoutes } from './upload';
-import multer from 'multer';
+
 
 const PORT = process.env.PORT || 3001;
 
