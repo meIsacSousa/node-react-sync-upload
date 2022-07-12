@@ -19,7 +19,7 @@ export interface UploadFile {
 }
 
 function App() {
-  const [_uploadFiles, setUploadFiles] = useState<UploadFile[]>([]);
+  const [uploadFiles, setUploadFiles] = useState<UploadFile[]>([]);
 
   const handleDrop = (files: File[]): void => {
     const formattedFiles = files.map(file => ({
@@ -40,17 +40,21 @@ function App() {
     for (const file of files) {
       const data = new FormData();
       data.append('file', file.file, file.name);
-      const response = await api.post('/uploads', data, {
-        onUploadProgress: (progressEvent) => {
-          const progress = Math.round((progressEvent.loaded * 100) / progressEvent.total);
-          updateFile(file.id, { progress });
-        }
-      });
 
-      response.status === 200 ?
-        updateFile(file.id, { uploaded: true }) :
+      try {
+        const response = await api.post('/uploads', data, {
+          onUploadProgress: (progressEvent) => {
+            const progress = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+            updateFile(file.id, { progress });
+          }
+        });
+
+        response.status === 200 ?
+          updateFile(file.id, { uploaded: true }) :
+          updateFile(file.id, { error: true });
+      } catch (error) {
         updateFile(file.id, { error: true });
-
+      }
     }
   }
 
@@ -63,7 +67,7 @@ function App() {
     <ThemeProvider theme={defaultTheme}>
       <Header />
       <Upload onDrop={handleDrop} />
-      <Modal />
+      {uploadFiles.length > 0 && <Modal files={uploadFiles} title={"Arquivos"} />}
       <GlobalStyle />
     </ThemeProvider>
   )
