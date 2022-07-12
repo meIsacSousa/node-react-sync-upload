@@ -39,8 +39,12 @@ const config = {
         file: Express.Multer.File,
         cb: FileFilterCallback
     ) => {
-
-        const notAllowedMimes = ['exe', 'js'];
+        const notAllowedMimes = [
+            'application/x-msdownload',
+            'text/javascript',
+            'application/octet-stream'
+        ];
+        
         if (notAllowedMimes.includes(file.mimetype)) {
             return cb(new Error('Extension not allowed'));
         } else {
@@ -51,6 +55,7 @@ const config = {
 
 const uploadFile = (req: Request, res: Response, next: NextFunction) => {
     let upload = multer(config).single('file');
+
     upload(req, res, err => {
         if (err) {
             return res.status(400).json({
