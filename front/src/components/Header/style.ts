@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const HeaderBox = styled.header`
     background-color: ${props => props.theme.colors.secondary};
     padding: 1.5rem;
-    box-shadow: 0px 1px 5px black;
+    box-shadow: 0px 1px 12px black;
 `;
 
 export const HeaderContainer = styled.div`
