@@ -15,7 +15,7 @@
 $ docker-compose up
 ```
 
-#### Accesse no browser
+#### Acesse no browser
 
 ```
 http://localhost:3000
@@ -24,9 +24,6 @@ http://localhost:3000
 #### Deseja acessar a API diretamente?
 
 ```
-[POST]http://localhost:3001/uploads
-
-body {
-  file: arquivo
-}
+[POST] http://localhost:3001/uploads
 ```
+* A requisição deve conter o arquivo em um campo "file"
