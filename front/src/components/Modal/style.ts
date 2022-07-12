@@ -39,6 +39,7 @@ export const ModalBodyItem = styled.div`
     padding: 0.5rem 1.5rem;
     margin-top: 0.5rem;
     gap: 1rem;
+    border-bottom: 1px solid ${props => props.theme.colors.background};
 `;
 
 export const ModalText = styled.div`
