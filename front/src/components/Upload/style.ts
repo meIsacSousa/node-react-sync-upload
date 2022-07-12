@@ -1,5 +1,5 @@
 import { DropzoneRootProps } from 'react-dropzone';
-import styled, { css, useTheme } from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface DropzoneContainerProps extends DropzoneRootProps {
     isDragActive: boolean;
