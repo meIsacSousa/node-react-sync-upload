@@ -1,0 +1,35 @@
+version: '3'
+services:
+  back:
+    build:
+      context: ./back
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3001:3001"
+    container_name: "node-app-FC"
+    networks:
+      - application
+    volumes:
+      - ./back:/usr/app
+      -  /usr/app/node_modules
+
+  front:
+    build:
+      context: ./front
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+      - "35729:35729"
+    environment:
+      - "CHOKIDAR_USEPOLLING=true"
+    container_name: "react-app-FC"
+    networks:
+      - application
+    volumes:
+      - ./front:/usr/webapp
+      - /usr/webapp/node_modules
+
+networks:
+    application:
+      driver: bridge
+      
