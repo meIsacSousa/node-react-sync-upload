@@ -6,6 +6,9 @@ const defaultTheme = {
         background: '#1c1c1c',
         textPrimary: '#fff',
         textSecondary: '#868686',
+    },
+    layout: {
+        maxWidth: '1100px',
     }
 }
 
