@@ -1,6 +1,6 @@
 import { CircularProgressbar } from "react-circular-progressbar";
 import { MdCheckCircle, MdError, MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
-import { ModalBody, ModalIcon, ModalBodyItem, ModalText, ModalContainer, ModalHeader } from "./style";
+import { ModalBody, ModalHeaderIcon, ModalBodyItem, ModalHeaderText, ModalContainer, ModalHeader } from "./style";
 import { useTheme } from "styled-components";
 import { UploadFile } from "../../App";
 import React from "react";
@@ -21,12 +21,12 @@ const Modal: React.FC<ModalProps> = ({ files, title }: ModalProps) => {
     return (
         <ModalContainer>
             <ModalHeader>
-                <ModalText>{title}</ModalText>
-                <ModalIcon onClick={handleToggle}>
+                <ModalHeaderText>{title}</ModalHeaderText>
+                <ModalHeaderIcon onClick={handleToggle}>
                     {isActive ?
-                        <MdKeyboardArrowDown size={26} color={theme.colors.secondary} /> :
-                        <MdKeyboardArrowUp size={26} color={theme.colors.secondary} />}
-                </ModalIcon>
+                        <MdKeyboardArrowDown size={26} color={theme.colors.textPrimary} /> :
+                        <MdKeyboardArrowUp size={26} color={theme.colors.textPrimary} />}
+                </ModalHeaderIcon>
             </ModalHeader>
             <ModalBody active={isActive}>
                 {files.map(file => (

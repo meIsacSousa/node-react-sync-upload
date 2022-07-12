@@ -10,6 +10,7 @@ export const ModalContainer = styled.div`
     right: 1.5rem;
     min-width: 23rem;
     background-color: ${props => props.theme.colors.secondary};
+    box-shadow: 0px 1px 12px black;
 `;
 
 export const ModalHeader = styled.div`
@@ -17,9 +18,10 @@ export const ModalHeader = styled.div`
     justify-content: space-between;
     font-size: 1rem;
     padding: 0.5rem;
-    background-color: ${props => props.theme.colors.primary};
-    color: ${props => props.theme.colors.secondary};
+    background-color: ${props => props.theme.colors.secondary};
+    color: ${props => props.theme.colors.textPrimary};
     font-weight: bold;
+    border-bottom: 1px solid ${props => props.theme.colors.primary};
 `;
 
 export const ModalBody = styled.div<ModalBodyProps>`
@@ -42,7 +44,7 @@ export const ModalBodyItem = styled.div`
     border-bottom: 1px solid ${props => props.theme.colors.background};
 `;
 
-export const ModalText = styled.div`
+export const ModalHeaderText = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -50,7 +52,7 @@ export const ModalText = styled.div`
     padding: 0 2rem;
 `;
 
-export const ModalIcon = styled.div`
+export const ModalHeaderIcon = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,7 +62,6 @@ export const ModalIcon = styled.div`
     &:hover {
         cursor: pointer;
         border-radius: 50%;
-        background-color: rgba(48, 48, 48, 0.3);
-
+        background-color: rgba(255, 205, 0, 0.3);
     }
 `;
