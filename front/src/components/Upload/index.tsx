@@ -1,8 +1,12 @@
 import Dropzone from "react-dropzone";
 import { DropzoneContainer, MessageContainer, UploadContainer } from "./style";
+import React from "react";
 
-const Upload = () => {
+interface UploadProps {
+    onDrop: (files: File[]) => void;
+}
 
+const Upload: React.FC<UploadProps> = ({ onDrop }: UploadProps) => {
     const message = (isDragActive: boolean) => {
         if (isDragActive) return <MessageContainer>Solte o arquivo aqui</MessageContainer>
         return <MessageContainer>Click ou arraste o arquivo</MessageContainer>
@@ -10,7 +14,7 @@ const Upload = () => {
 
     return (
         <UploadContainer>
-            <Dropzone>
+            <Dropzone onDropAccepted={onDrop}>
                 {
                     ({ getRootProps, getInputProps, isDragActive }) => (
                         <DropzoneContainer isDragActive={isDragActive} {...getRootProps()}>
