@@ -3,20 +3,19 @@ import { DropzoneContainer, MessageContainer, UploadContainer } from "./style";
 
 const Upload = () => {
 
-    const message = () => {
-        return (
-            <MessageContainer>Click ou arraste o arquivo</MessageContainer>
-        )
+    const message = (isDragActive: boolean) => {
+        if (isDragActive) return <MessageContainer>Solte o arquivo aqui</MessageContainer>
+        return <MessageContainer>Click ou arraste o arquivo</MessageContainer>
     }
 
     return (
         <UploadContainer>
             <Dropzone>
                 {
-                    ({ getRootProps, getInputProps }) => (
-                        <DropzoneContainer {...getRootProps()}>
+                    ({ getRootProps, getInputProps, isDragActive }) => (
+                        <DropzoneContainer isDragActive={isDragActive} {...getRootProps()}>
                             <input {...getInputProps()} />
-                            {message()}
+                            {message(isDragActive)}
                         </DropzoneContainer>
                     )
                 }
