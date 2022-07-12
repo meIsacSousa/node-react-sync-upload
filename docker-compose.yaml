@@ -11,7 +11,7 @@ services:
       - application
     volumes:
       - ./back:/usr/app
-      -  /usr/app/node_modules
+      -  back_end_modules:/usr/app/node_modules
 
   front:
     build:
@@ -27,9 +27,12 @@ services:
       - application
     volumes:
       - ./front:/usr/webapp
-      - /usr/webapp/node_modules
+      - front_end_modules:/usr/webapp/node_modules
 
 networks:
     application:
       driver: bridge
       
+volumes:
+    back_end_modules:
+    front_end_modules: 
