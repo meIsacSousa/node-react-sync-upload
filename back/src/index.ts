@@ -3,7 +3,7 @@ import cors from 'cors';
 import { uploadRoutes } from './upload';
 
 
-const PORT = process.env.PORT || 3001;
+const PORT = 3001;
 
 const app = express();
 
